@@ -14,12 +14,15 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class GmailSender{
+    private static String from;
+    private static String password;
 
-    public static void sendEmail(final String from, final String password, final String to, final String subject, final String body) {
+    public static void sendEmail(final String to, final String subject, final String body) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
-
+                if(from == null || to == null)
+                    return null;
                 // Assuming you are sending email from through gmails smtp
                 String host = "smtp.gmail.com";
 
@@ -70,5 +73,21 @@ public class GmailSender{
                 return null;
             }
         }.execute();
+    }
+
+    public static String getFrom() {
+        return from;
+    }
+
+    public static void setFrom(String f) {
+        from = f;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String p) {
+        password = p;
     }
 }
