@@ -1,0 +1,3 @@
+rootProject.name='GmailSenderExample'
+include ':app'
+include ':gmailsender'
